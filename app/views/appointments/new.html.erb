@@ -1,0 +1,57 @@
+<h1>New appointment</h1>
+
+<%# render "form", appointment: @appointment %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.1/flatpickr.min.js"></script>
+
+<script>
+
+flatpickr('#calendar-tomorrow', {
+    "minDate": new Date().fp_incr(1)
+});
+
+flatpickr('#calendar-selectrange', {
+    "minDate": new Date().fp_incr(1),
+    "maxDate": new Date().fp_incr(7)
+});
+
+flatpickr('#calendar-range', {
+    "mode": "range"
+});
+
+// use "https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"
+flatpickr('#calendar-ja', {
+    "locale": "ja",
+    "dateFormat": "Y/m/d",
+});
+</script>
+
+<h1>flatpickr examples</h1>
+
+<div class="group">
+  <input type="text" id="calendar-tomorrow">
+  <span class="bar"></span>
+  <label class="input-label">From tomorrow</label>
+</div>
+
+<div class="group">
+  <input type="text" id="calendar-selectrange">
+  <span class="bar"></span>
+  <label class="input-label">In a week from tomorrow</label>
+</div>
+
+<div class="group">
+  <input type="text" id="calendar-range">
+  <span class="bar"></span>
+  <label class="input-label">Range of dates</label>
+</div>
+
+<div class="group">
+  <input type="text" id="calendar-ja">
+  <span class="bar"></span>
+  <label class="input-label">Localization (Japanese)</label>
+</div>
+
+<div>
+  <%= link_to "Back to appointments", appointments_path %>
+</div>

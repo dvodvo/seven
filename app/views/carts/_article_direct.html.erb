@@ -1,0 +1,26 @@
+ <div class='cell auto article_frame'>
+      <div class='grid-x grid-padding-x'>
+        <div class='cell small-6'> 
+          <h5><%= article.description_short %></h5>
+        </div>
+        <div class='cell small-6 text-center'>
+          <%= render 'cartitem_price_block', article: article %>
+          <%= turbo_frame_tag dom_id(article), class: 'fade-text' do %>
+            <div id='cartitem_errors'></div>
+            <%= render 'cartitem_block_direct', article: article %>
+            <%# render 'replace' %>
+          <% end %>
+          <%# turbo_frame_tag "new_cartitem", src: new_cartitem_path(cart_id: @cart.id, article_id: article.id), target: "_top" %>
+          
+        </div>
+      </div>
+      <div class='grid-x grid-padding-x'>
+        <div class='cell small-12'> 
+          <% if article.image_uri.present? %>
+            <%= image_tag(article.image_uri.to_s, class: 'rounded_corners non_desktop') %>
+          <% end %>
+          <h6><%= article.description_categori_text %></h6>
+          <% if !article.description_search.blank? %> <%= article.description_search %> <% end %>
+        </div>
+      </div>
+  </div>

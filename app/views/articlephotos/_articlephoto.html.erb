@@ -1,0 +1,16 @@
+<div id="<%= dom_id articlephoto %>" class="grid-x grid-padding-x">
+  <div class='cell small-6'>
+    <%= image_tag articlephoto.photo_url if articlephoto.photo? %>
+    <%= image_tag articlephoto.photo_url(:medium) if articlephoto.photo? %>
+    <%= image_tag articlephoto.photo_url(:large) if articlephoto.photo? %>
+  </div>
+  <div class='cell small-4'>
+    <%= articlephoto.name %>
+    <%= image_tag articlephoto.photo_url(:tiny) if articlephoto.photo? %>
+  </div>
+  <div class='cell small-2'>
+    Sequence:<br>
+    <strong><%= articlephoto.sequence %></strong>
+  </div>
+
+</div>

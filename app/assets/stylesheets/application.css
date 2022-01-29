@@ -1,0 +1,259 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require font-awesome
+ *= require_self
+ */
+:root {
+  --main-font-family: Rubik, sans-serif;
+  --secondary-font-family: Roboto, sans-serif;
+  --cursive-font-family: Tangerine, cursive;
+  --main-font-color: #000;
+  --secondary-font-color: #000;
+  --cursive-font-color: rgba(0,0,0,0.93);
+  --main_bg_color: #78903a;
+  --main_bg_hover_color: #d6e6a5;
+  --main_bg_selected_color: #007f3e;
+  --link_color: rgba(133,8,32,1);
+  --hover_color: #444;
+  --selected_color: #fff;
+  --alert_color: #e2001a;
+  --warning_color: #ffae00;
+   /* interactive registration */
+  --pure-material-primary-rgb: 255, 191, 0;
+  --pure-material-onsurface-rgb: 0, 0, 0;
+}
+turbo-frame {
+  display: block;
+  border: 1px solid blue;
+}
+.fade-in-text {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 150px;
+  color: black;
+  animation: fadeIn linear 7s;
+  -webkit-animation: fadeIn linear 7s;
+  -moz-animation: fadeIn linear 7s;
+  -o-animation: fadeIn linear 7s;
+  -ms-animation: fadeIn linear 7s;
+}
+.fade-text {
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  transition-timing-function: linear;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+.my_tooltip {
+  position:relative; /* making the .tooltip span a container for the tooltip text */
+  border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+}
+.my_tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position:absolute;
+  
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
+  
+  /* move to right */
+  left:100%;
+  margin-left:15px; /* and add a small left margin */
+  
+  /* basic styles */
+  width:200px;
+  padding:10px;
+  border-radius:10px;
+  background:#000;
+  color: #fff;
+  text-align:center;
+
+  display:none; /* hide by default */
+}
+.my_tooltip:hover:before {
+  display:block;
+}
+.my_tooltip.left:before {
+  /* reset defaults */
+  left:initial;
+  margin:initial;
+
+  /* set new values */
+  right:100%;
+  margin-right:15px;
+}
+.tooltip:after {
+  content: "";
+  position:absolute;
+  
+  /* position tooltip correctly */
+  left:100%;
+  margin-left:-5px;
+ 
+  /* vertically center */
+  top:50%;
+  transform:translateY(-50%);
+ 
+  /* the arrow */
+  border:10px solid #000;
+  border-color: transparent black transparent transparent;
+  
+  display:none;
+}
+.my_tooltip:hover:before, .my_tooltip:hover:after {
+  display:block;
+  border-color: transparent black transparent transparent;
+}
+img.rounded_corners {
+  border-radius: 5% /8%;
+}
+img.non_desktop {
+  height: 250px;
+  width: 350px;
+}
+.article_frame {
+  padding: 6px 16px;
+  min-width: 25%;
+}
+.article_frame > div { 
+  background: white;
+  border: 1px solid var(--main_bg_color);
+}
+.grid-padding-x > .cell
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+}
+
+/* https://codepen.io/tayfunerbilen/pen/wvvKBeX
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+}
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	padding: 25px;
+}
+ */
+.popup-container {
+  display: inline-block; }
+  .popup-container .popup-button {
+    background: #333;
+    line-height: 34px;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 3px;
+    display: block;
+    cursor: pointer; }
+    .popup-container .popup-button:hover {
+      background: #444; }
+  .popup-container .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: 250ms all; }
+    .popup-container .popup .popup-inner {
+      width: 400px;
+      box-sizing: border-box;
+      padding: 20px;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 150%;
+      transition: 250ms all; }
+      .popup-container .popup .popup-inner .popup-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px; }
+        .popup-container .popup .popup-inner .popup-title h6 {
+          font-size: 18px;
+          font-weight: 500; }
+        .popup-container .popup .popup-inner .popup-title .popup-close-btn {
+          cursor: pointer;
+          background: #eee;
+          display: block;
+          line-height: 30px;
+          padding: 0 15px;
+          font-size: 14px;
+          color: #222;
+          border-radius: 3px; }
+      .popup-container .popup .popup-inner .popup-content ul li {
+        margin-bottom: 10px; }
+        .popup-container .popup .popup-inner .popup-content ul li:last-child {
+          margin-bottom: 0; }
+        .popup-container .popup .popup-inner .popup-content ul li input {
+          width: 100%;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          line-height: 34px;
+          padding: 0 15px;
+          font-size: 14px;
+          box-sizing: border-box; }
+        .popup-container .popup .popup-inner .popup-content ul li button {
+          width: 100%;
+          line-height: 34px;
+          background: #666;
+          color: #fff;
+          cursor: pointer;
+          border-radius: 3px;
+          border: none;
+          font-size: 14px; }
+          .popup-container .popup .popup-inner .popup-content ul li button:hover {
+            background: #444; }
+    .popup-container .popup .transparent-label {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      cursor: pointer; }
+  .popup-container > input {
+    display: none; }
+    .popup-container > input:checked + .popup {
+      opacity: 1;
+      visibility: visible; }
+      .popup-container > input:checked + .popup .popup-inner {
+        top: 50%; }

@@ -1,0 +1,38 @@
+<%= turbo_frame_tag dom_id(article) do %>
+<%# turbo_frame_tag 'new_message', src: new_message_path(room_id: @room), target: '_top' %>
+  <% if !@cart.nil? && !@cart.cartitems.blank? %>
+    <% @cartitem_for_article = @cart.cartitems.select{ |i| i.article_id == article.id } %> 
+  <% else %>
+    <% @cartitem_for_article = [] %>
+  <% end %>
+  <div id='article_ci_<%= article.id %>'>
+    <% if !@cartitem_for_article.empty? && @cartitem_for_article.first.article_id == article.id %>
+      <%= form_with(url: edit_q_cartitem_path(id: @cartitem_for_article.first.id), local: false, method: :patch) do |form| %>
+        <% if article.um.integer? %>
+          <%= form.number_field :q_new, value: number_with_precision(@cartitem_for_article.first.quantity_ordered, precision: 0), min: 0, style: 'width: 69px; display: inline-block;' %>
+        <% else %>
+          <%= form.text_field :q_new, value: @cartitem_for_article.first.quantity_ordered, size: 4, style: 'width: 69px; display: inline-block;' %>
+        <% end %>
+        <%= button_tag(style: 'display: inline-block;')  do %>
+          <p class='button warning' style='margin-top: 10px;'><%= fa_icon('recycle', class: 'fa 3x') %></p>
+        <% end %> 
+      <% end %>
+    
+    <% else %>
+      <%= form_with(model: @cartitem, local: false) do |f| %>
+        <% if !@promoitem_for_article.nil? && @promoitem_for_article.size > 0 %>
+          <%= f.hidden_field :price_ordered, value: @promoitem_for_article.first.price_promo %>
+        <% else %>
+          <%= f.hidden_field :price_ordered, value: article.sell_price %>
+        <% end %>
+        <%= f.hidden_field :cart_id, value: @cart.id %>
+        <%= f.hidden_field :article_id, value: article.id %>
+        <%= f.hidden_field :fulfilled, value: false %>
+        <%= f.number_field :q_order, min: 1, style: 'width: 69px; display: inline-block;' %>
+        <%= button_tag(style: 'display: inline-block;')  do %>
+          <p class='button' style='margin-top: 10px;'><%= fa_icon('cart-plus', class: 'fa 3x') %></p>
+        <% end %> 
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

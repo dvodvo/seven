@@ -1,0 +1,18 @@
+<% if @cartitem %>
+  <%= turbo_stream.replace "article_#{@cartitem.article_id}", @cartitem %>
+<% else %>
+  <%= turbo_stream.replace "article_#{@article.id}" do %>
+    <%= render 'cartitem_block', article: @article %>
+  <% end %>
+    <%# render 'cartitem_block', article: @article %>
+<% end %>
+
+<%= turbo_stream.replace 'cart_value' do %>
+  <%= render 'carts/cart_value' %>
+<% end %>
+<%= turbo_stream.replace 'cartitems' do %>
+  <%= render 'carts/cartitems' %>
+<% end %>
+  <%= turbo_stream.replace 'cart_elements' do %>
+    <%= render 'carts/cart_elements' %>
+  <% end %>

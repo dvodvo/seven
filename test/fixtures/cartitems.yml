@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  article: one
+  cart: one
+  fulfilled: false
+  price_ordered: 9.99
+  quantity_ordered: 9.99
+  quantity_prepared: 9.99
+
+two:
+  article: two
+  cart: two
+  fulfilled: false
+  price_ordered: 9.99
+  quantity_ordered: 9.99
+  quantity_prepared: 9.99

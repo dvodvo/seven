@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'cart_value', class: 'fade-text' do %>
+  <%= number_to_currency(@cart.cartitems.sum(:price_ordered)) %>
+<% end %>

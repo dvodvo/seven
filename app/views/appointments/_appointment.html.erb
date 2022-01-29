@@ -1,0 +1,32 @@
+<div id="<%= dom_id appointment %>">
+  <p>
+    <strong>Start at:</strong>
+    <%= appointment.start_at %>
+  </p>
+
+</div>
+<div class="grid-x grid-padding-x">
+  <div class='cell small-9'>bouze
+    <%= render "datepicker_two", appointment: appointment %>
+    <%# render "datepicker", appointment: appointment, dates_to_disable: @dates_to_disable %>
+  </div>
+  <div class='cell small-9'>
+    <%= link_to appointment_path(appointment),
+      method: :delete,
+      remote: true do %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="row my-3 align-items-center">
+  <div class="col-sm-11">
+    <%= render "datepicker", appointment: appointment, dates_to_disable: @dates_to_disable %>
+  </div>
+  <%= link_to appointment_path(appointment),
+      method: :delete,
+      remote: true,
+      class: "btn btn-danger col-sm-1" do %>
+      <i class="fas fa-times"></i>
+  <% end %>
+</div>

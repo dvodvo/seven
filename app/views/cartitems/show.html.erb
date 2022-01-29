@@ -1,0 +1,19 @@
+      <%= form_with(url: edit_q_cartitem_path(id: @cartitem_for_article.first.id), local: false, method: :patch) do |form| %>
+        <% if article.um.integer? %>
+          <%= form.number_field :q_new, value: number_with_precision(@cartitem_for_article.first.quantity_ordered, precision: 0), min: 0, style: 'width: 69px; display: inline-block;' %>
+        <% else %>
+          <%= form.text_field :q_new, value: @cartitem_for_article.first.quantity_ordered, size: 4, style: 'width: 69px; display: inline-block;' %>
+        <% end %>
+        <%= button_tag(style: 'display: inline-block;')  do %>
+          <p class='button warning' style='margin-top: 10px;'><%= fa_icon('recycle', class: 'fa 3x') %></p>
+        <% end %> 
+      <% end %>
+
+<!-- <p style="color: green"><%= notice %></p> -->
+
+<%# render @cartitem %>
+
+  <%# link_to "Edit this cartitem", edit_cartitem_path(@cartitem) %>
+  <%# link_to "Back to cartitems", cartitems_path %>
+
+  <%# button_to "Destroy this cartitem", @cartitem, method: :delete %>

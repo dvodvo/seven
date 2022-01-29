@@ -1,0 +1,42 @@
+<div class="body-blackout"></div>
+<div class='grid-x grid-padding-x'>
+  <div class='cell small-9 text-center'>
+    <div class="popup-container">
+    	<label class="popup-button" for="login-popup">My cart</label>
+    	<input type="checkbox" id="login-popup">
+    	<div class="popup">
+    		<label for="login-popup" class="transparent-label"></label>
+    		<div class="popup-inner">
+    			<div class="popup-title">
+    				<h6>My cart</h6>
+    				<label for="login-popup" class="popup-close-btn">Close</label>
+    			</div>
+    			<div class="popup-content">
+                <%= turbo_frame_tag 'cart_elements', class: 'fade-text' do %>
+                  <%= render 'cart_elements' %>
+                <% end %>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+  <div class='cell small-1 text-right'>
+    <%= turbo_frame_tag 'cart_value', class: 'fade-text' do %>
+      <%= render 'cart_value' %>
+    <% end %>
+  </div> 
+  <div class='cell small-2 text-right'>
+    <%= turbo_frame_tag 'cartitems', class: 'fade-text' do %>
+      <%= render 'cartitems' %>
+    <% end %>
+  </div> 
+</div>
+<div class='grid-x grid-padding-x'>
+  <% @articles.in_groups_of(4, false) do |articles| %>
+    <div class='cell small-3'> 
+      <% articles.each do |article| %>
+        <%= render 'article_direct', article: article %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

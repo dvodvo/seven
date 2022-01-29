@@ -1,0 +1,22 @@
+<%= turbo_frame_tag dom_id(message) do %>
+  <div id="<%= dom_id message %>">
+  
+    <div class="grid-x grid-padding-x">
+      <div class='cell small-3'>
+        <%= message.created_at.to_formatted_s(:short) %>
+      </div>
+      <div class='cell small-9'>
+        <%= message.content %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class='cell small-3'>
+        <%= link_to "Edit this message", edit_message_path(message, room_id: message.room_id) %>
+      </div>
+      <div class='cell small-9'>
+        <%= button_to "Destroy this message", message, method: :delete %>
+      </div>
+    </div>
+  
+  </div>
+<% end %>

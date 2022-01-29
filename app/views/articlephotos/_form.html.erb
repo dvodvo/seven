@@ -1,0 +1,36 @@
+<%= form_with(model: articlephoto) do |form| %>
+  <% if articlephoto.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(articlephoto.errors.count, "error") %> prohibited this articlephoto from being saved:</h2>
+
+      <ul>
+        <% articlephoto.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid-x grid-padding-x">
+  
+    <div class='cell small-6'>
+      <%= form.file_field :photo, accept: 'image/*' %>
+    </div>
+  
+    <div class='cell small-4'>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div class='cell small-2'>
+      <%= form.label :sequence, style: "display: block" %>
+      <%= form.number_field :sequence %>
+    </div>
+  
+  </div>
+  <div class="grid-x grid-padding-x">
+    <div class='cell small-12 text-center'>
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>

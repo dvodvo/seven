@@ -1,0 +1,61 @@
+<%= form_with(scope: @message, url: sms_post_messages_path) do |form| %>
+  <% if @message.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+        <% @message.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :room_id, value: 1 %>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+<!--    <textarea id="text" onKeyUp="count_it()"></textarea> -->
+    <%= form.text_area :content, onkeyup: 'count_it()' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<span id="counter"></span>
+
+<div class='text-center'>
+<span 
+  data-text="Thanks for hovering! I'm a tooltip" 
+  class="my_tooltip left"
+>Hover over me!</span>
+</div>
+
+<script>
+function count_it() {
+  var count = document.getElementById('message_content').value.length;
+  document.getElementById('counter').innerHTML = count;
+  document.getElementById('tweet').innerHTML = 140 - count;
+  if (140 - count < 0) {
+    document.getElementById('tweet').style.color = 'red';
+  }
+  else {
+    document.getElementById('tweet').style.color = 'black';
+  }
+  document.getElementById('adwords-hl').innerHTML = 25 - count;
+  if (25 - count < 0) {
+    document.getElementById('adwords-hl').style.color = 'red';
+  }
+  else {
+    document.getElementById('adwords-hl').style.color = 'black';
+  }
+  document.getElementById('adwords-dl').innerHTML = 35 - count;
+  if (35 - count < 0) {
+    document.getElementById('adwords-dl').style.color = 'red';
+  }
+  else {
+    document.getElementById('adwords-dl').style.color = 'black';
+  }
+}
+</script>

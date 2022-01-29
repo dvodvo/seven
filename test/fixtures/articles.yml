@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description_short: MyString
+  sell_price: 9.99
+  centralcode: MyString
+  description_categori_text: MyString
+  description_search: MyText
+  image_uri: MyString
+
+two:
+  description_short: MyString
+  sell_price: 9.99
+  centralcode: MyString
+  description_categori_text: MyString
+  description_search: MyText
+  image_uri: MyString

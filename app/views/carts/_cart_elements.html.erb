@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'cart_elements', class: 'fade-text' do %>
+  <table>
+    <% @cart.cartitems.each do |cartitem| %>
+      <tr>
+        <td><%= cartitem.article.description_short %></td>
+        <td><%= cartitem.article.sell_price %></td>
+        <td><%= cartitem.quantity_ordered %></td>
+        <td><%= cartitem.price_ordered %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

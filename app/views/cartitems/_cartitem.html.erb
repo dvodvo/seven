@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(@cartitem.article), class: 'fade-text' do %>
+
+  <%= form_with(url: update_q_cartitem_path(@cartitem), local: false, method: :patch) do |form| %>
+    <%= form.number_field :quantity_ordered, value: number_with_precision(@cartitem.quantity_ordered, precision: 0), min: 0, style: 'width: 69px; display: inline-block;' %>
+    <%= button_tag(style: 'display: inline-block;')  do %>
+      <p class='button warning' style='margin-top: 10px;'><%= fa_icon('recycle', class: 'fa 3x') %></p>
+    <% end %> 
+  <% end %>
+
+<% end %>

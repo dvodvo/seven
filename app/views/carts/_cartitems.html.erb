@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'cartitems', class: 'fade-text' do %>
+  <%= @cart.cartitems.size %> (<%= @cart.cartitems.sum(:quantity_ordered) %> pz.)
+<% end %>

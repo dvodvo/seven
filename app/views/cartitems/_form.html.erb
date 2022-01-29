@@ -1,0 +1,14 @@
+      <%= form_with(model: @cartitem, local: false) do |f| %>
+        <% if !@promoitem_for_article.nil? && @promoitem_for_article.size > 0 %>
+          <%= f.hidden_field :price_ordered, value: @promoitem_for_article.first.price_promo %>
+        <% else %>
+          <%= f.hidden_field :price_ordered, value: article.sell_price %>
+        <% end %>
+        <%= f.hidden_field :cart_id, value: @cart.id %>
+        <%= f.hidden_field :article_id, value: article.id %>
+        <%= f.hidden_field :fulfilled, value: false %>
+        <%= f.number_field :quantity_ordered, min: 1, style: 'width: 69px; display: inline-block;' %>
+        <%= button_tag(style: 'display: inline-block;')  do %>
+          <p class='button' style='margin-top: 10px;'><%= fa_icon('cart-plus', class: 'fa 3x') %></p>
+        <% end %> 
+      <% end %>
